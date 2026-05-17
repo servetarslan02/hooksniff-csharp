@@ -39,6 +39,46 @@ namespace HookSniff
             get => new Statistics(this);
         }
 
+        public Environment Environment
+        {
+            get => new Environment(this);
+        }
+
+        public BackgroundTask BackgroundTask
+        {
+            get => new BackgroundTask(this);
+        }
+
+        public OperationalWebhook OperationalWebhook
+        {
+            get => new OperationalWebhook(this);
+        }
+
+        public MessagePoller MessagePoller
+        {
+            get => new MessagePoller(this);
+        }
+
+        public Inbound Inbound
+        {
+            get => new Inbound(this);
+        }
+
+        public ConnectorApi Connector
+        {
+            get => new ConnectorApi(this);
+        }
+
+        public IntegrationApi Integration
+        {
+            get => new IntegrationApi(this);
+        }
+
+        public StreamApi Stream
+        {
+            get => new StreamApi(this);
+        }
+
         public ILogger? Logger { get; }
 
         public HookSniffHttpClient HookSniffHttpClient;
