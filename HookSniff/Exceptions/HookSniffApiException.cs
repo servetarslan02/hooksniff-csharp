@@ -144,3 +144,67 @@ namespace HookSniff.Exceptions
         }
     }
 }
+
+    /// <summary>408 Request Timeout — The server timed out waiting for the request</summary>
+    public class RequestTimeoutException : HookSniffApiException
+    {
+        public RequestTimeoutException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Request timeout", 408, message, headers) { }
+    }
+
+    /// <summary>410 Gone — The resource has been permanently removed</summary>
+    public class GoneException : HookSniffApiException
+    {
+        public GoneException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Gone", 410, message, headers) { }
+    }
+
+    /// <summary>413 Payload Too Large</summary>
+    public class PayloadTooLargeException : HookSniffApiException
+    {
+        public PayloadTooLargeException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Payload too large", 413, message, headers) { }
+    }
+
+    /// <summary>501 Not Implemented</summary>
+    public class NotImplementedException : HookSniffApiException
+    {
+        public NotImplementedException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Not implemented", 501, message, headers) { }
+    }
+
+    /// <summary>507 Insufficient Storage</summary>
+    public class InsufficientStorageException : HookSniffApiException
+    {
+        public InsufficientStorageException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Insufficient storage", 507, message, headers) { }
+    }
+
+    /// <summary>508 Loop Detected</summary>
+    public class LoopDetectedException : HookSniffApiException
+    {
+        public LoopDetectedException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Loop detected", 508, message, headers) { }
+    }
+
+    /// <summary>Timeout — request exceeded the configured timeout</summary>
+    public class TimeoutException : HookSniffApiException
+    {
+        public TimeoutException(string message = null)
+            : base(message ?? "Request timeout", 0, null) { }
+    }
+
+    /// <summary>Network error — connection failed</summary>
+    public class NetworkException : HookSniffApiException
+    {
+        public NetworkException(string message = null)
+            : base(message ?? "Network error", 0, null) { }
+    }
+
+    /// <summary>Authentication error — token invalid, expired, or missing</summary>
+    public class AuthenticationException : HookSniffApiException
+    {
+        public AuthenticationException(string message = null, IDictionary<string, string> headers = null)
+            : base(message ?? "Authentication failed", 401, message, headers) { }
+    }
+}
