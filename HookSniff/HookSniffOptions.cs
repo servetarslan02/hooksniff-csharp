@@ -2,27 +2,24 @@ namespace HookSniff
 {
     public class HookSniffOptions
     {
-        [Obsolete("BaseUrl is deprecated, please use ServerUrl instead.")]
-        public string? BaseUrl
-        {
-            get => ServerUrl;
-        }
         public string? ServerUrl { get; }
         public List<int> RetryScheduleMilliseconds { get; } = [1000, 2000, 4000];
         public int TimeoutMilliseconds { get; } = 15000;
+        public bool Debug { get; } = false;
+        public Dictionary<string, string> Headers { get; } = new();
 
-        /// <param name="serverUrl">The server URL to connect to.</param>
-        /// <param name="baseUrl">[Deprecated] Please use serverUrl parameter instead.</param>
-#pragma warning disable CS0618
         public HookSniffOptions(
             string? serverUrl = null,
             int timeoutMilliseconds = 15000,
             List<int>? retryScheduleMilliseconds = null,
-            string? baseUrl = null
+            bool debug = false,
+            Dictionary<string, string>? headers = null
         )
         {
-            ServerUrl = serverUrl ?? baseUrl;
+            ServerUrl = serverUrl;
             TimeoutMilliseconds = timeoutMilliseconds;
+            Debug = debug;
+            if (headers != null) Headers = headers;
             retryScheduleMilliseconds ??= [1000, 2000, 4000];
             if (retryScheduleMilliseconds.Count > 5)
             {
@@ -30,6 +27,11 @@ namespace HookSniff
             }
             RetryScheduleMilliseconds = retryScheduleMilliseconds;
         }
-#pragma warning restore CS0618
+
+        public HookSniffOptions Header(string name, string value)
+        {
+            Headers[name] = value;
+            return this;
+        }
     }
 }
