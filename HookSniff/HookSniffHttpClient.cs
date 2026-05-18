@@ -230,6 +230,7 @@ namespace HookSniff
 
             // For some reason our user-agent does not pass validation
             request.Headers.TryAddWithoutValidation("User-Agent", userAgent);
+            request.Headers.TryAddWithoutValidation("X-HookSniff-SDK", userAgent);
             if (content != null)
             {
                 string json_body;
