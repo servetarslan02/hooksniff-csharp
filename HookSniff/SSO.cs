@@ -10,46 +10,46 @@ namespace HookSniff
 
         public async Task<SsoConfigOut> GetConfigAsync(CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<SsoConfigOut>(HttpMethod.Get, "/api/v1/sso/config", cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<SsoConfigOut>(HttpMethod.Get, "/v1/sso/config", cancellationToken: ct);
             return r.Data;
         }
 
         public SsoConfigOut GetConfig()
         {
-            var r = _client.HookSniffHttpClient.SendRequest<SsoConfigOut>(HttpMethod.Get, "/api/v1/sso/config");
+            var r = _client.HookSniffHttpClient.SendRequest<SsoConfigOut>(HttpMethod.Get, "/v1/sso/config");
             return r.Data;
         }
 
         public async Task<SsoConfigOut> UpsertConfigAsync(UpsertSsoRequest req, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<SsoConfigOut>(HttpMethod.Post, "/api/v1/sso/config", content: req, cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<SsoConfigOut>(HttpMethod.Post, "/v1/sso/config", content: req, cancellationToken: ct);
             return r.Data;
         }
 
         public SsoConfigOut UpsertConfig(UpsertSsoRequest req)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<SsoConfigOut>(HttpMethod.Post, "/api/v1/sso/config", content: req);
+            var r = _client.HookSniffHttpClient.SendRequest<SsoConfigOut>(HttpMethod.Post, "/v1/sso/config", content: req);
             return r.Data;
         }
 
         public async Task DeleteConfigAsync(CancellationToken ct = default)
         {
-            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Delete, "/api/v1/sso/config", cancellationToken: ct);
+            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Delete, "/v1/sso/config", cancellationToken: ct);
         }
 
         public void DeleteConfig()
         {
-            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Delete, "/api/v1/sso/config");
+            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Delete, "/v1/sso/config");
         }
 
         public async Task TestAsync(CancellationToken ct = default)
         {
-            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Post, "/api/v1/sso/test", cancellationToken: ct);
+            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Post, "/v1/sso/test", cancellationToken: ct);
         }
 
         public void Test()
         {
-            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Post, "/api/v1/sso/test");
+            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Post, "/v1/sso/test");
         }
     }
 }

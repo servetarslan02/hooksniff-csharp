@@ -55,6 +55,6 @@ namespace HookSniff
             }
         }
 
-        internal static string DEFAULT_SERVER_URL = "https://api.hooksniff-1046140057667.europe-west1.run.app";
+        internal static string DEFAULT_SERVER_URL = "https://hooksniff-api-1046140057667.europe-west1.run.app";
     }
 }

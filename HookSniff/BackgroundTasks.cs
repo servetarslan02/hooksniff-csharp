@@ -23,37 +23,37 @@ namespace HookSniff
 
         public async Task<List<BackgroundTaskOut>> ListAsync(BackgroundTaskListOptions? options = null, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<List<BackgroundTaskOut>>(HttpMethod.Get, "/api/v1/background-tasks", queryParams: options?.QueryParams(), cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<List<BackgroundTaskOut>>(HttpMethod.Get, "/v1/background-tasks", queryParams: options?.QueryParams(), cancellationToken: ct);
             return r.Data;
         }
 
         public List<BackgroundTaskOut> List(BackgroundTaskListOptions? options = null)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<List<BackgroundTaskOut>>(HttpMethod.Get, "/api/v1/background-tasks", queryParams: options?.QueryParams());
+            var r = _client.HookSniffHttpClient.SendRequest<List<BackgroundTaskOut>>(HttpMethod.Get, "/v1/background-tasks", queryParams: options?.QueryParams());
             return r.Data;
         }
 
         public async Task<BackgroundTaskOut> GetAsync(string id, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<BackgroundTaskOut>(HttpMethod.Get, $"/api/v1/background-tasks/{id}", cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<BackgroundTaskOut>(HttpMethod.Get, $"/v1/background-tasks/{id}", cancellationToken: ct);
             return r.Data;
         }
 
         public BackgroundTaskOut Get(string id)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<BackgroundTaskOut>(HttpMethod.Get, $"/api/v1/background-tasks/{id}");
+            var r = _client.HookSniffHttpClient.SendRequest<BackgroundTaskOut>(HttpMethod.Get, $"/v1/background-tasks/{id}");
             return r.Data;
         }
 
         public async Task<BackgroundTaskOut> CancelAsync(string id, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<BackgroundTaskOut>(HttpMethod.Put, $"/api/v1/background-tasks/{id}", cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<BackgroundTaskOut>(HttpMethod.Put, $"/v1/background-tasks/{id}", cancellationToken: ct);
             return r.Data;
         }
 
         public BackgroundTaskOut Cancel(string id)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<BackgroundTaskOut>(HttpMethod.Put, $"/api/v1/background-tasks/{id}");
+            var r = _client.HookSniffHttpClient.SendRequest<BackgroundTaskOut>(HttpMethod.Put, $"/v1/background-tasks/{id}");
             return r.Data;
         }
     }

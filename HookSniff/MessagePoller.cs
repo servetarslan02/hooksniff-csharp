@@ -23,37 +23,37 @@ namespace HookSniff
 
         public async Task<PollResponse> PollAsync(MessagePollerPollOptions? options = null, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<PollResponse>(HttpMethod.Get, "/api/v1/message-poller/poll", queryParams: options?.QueryParams(), cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<PollResponse>(HttpMethod.Get, "/v1/message-poller/poll", queryParams: options?.QueryParams(), cancellationToken: ct);
             return r.Data;
         }
 
         public PollResponse Poll(MessagePollerPollOptions? options = null)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<PollResponse>(HttpMethod.Get, "/api/v1/message-poller/poll", queryParams: options?.QueryParams());
+            var r = _client.HookSniffHttpClient.SendRequest<PollResponse>(HttpMethod.Get, "/v1/message-poller/poll", queryParams: options?.QueryParams());
             return r.Data;
         }
 
         public async Task<SeekResponse> SeekAsync(SeekRequest req, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<SeekResponse>(HttpMethod.Post, "/api/v1/message-poller/seek", content: req, cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<SeekResponse>(HttpMethod.Post, "/v1/message-poller/seek", content: req, cancellationToken: ct);
             return r.Data;
         }
 
         public SeekResponse Seek(SeekRequest req)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<SeekResponse>(HttpMethod.Post, "/api/v1/message-poller/seek", content: req);
+            var r = _client.HookSniffHttpClient.SendRequest<SeekResponse>(HttpMethod.Post, "/v1/message-poller/seek", content: req);
             return r.Data;
         }
 
         public async Task<CommitResponse> CommitAsync(CommitRequest req, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<CommitResponse>(HttpMethod.Post, "/api/v1/message-poller/commit", content: req, cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<CommitResponse>(HttpMethod.Post, "/v1/message-poller/commit", content: req, cancellationToken: ct);
             return r.Data;
         }
 
         public CommitResponse Commit(CommitRequest req)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<CommitResponse>(HttpMethod.Post, "/api/v1/message-poller/commit", content: req);
+            var r = _client.HookSniffHttpClient.SendRequest<CommitResponse>(HttpMethod.Post, "/v1/message-poller/commit", content: req);
             return r.Data;
         }
     }

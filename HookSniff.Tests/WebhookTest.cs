@@ -33,8 +33,7 @@ namespace HookSniff.Tests
                 { "webhook-timestamp", TIMESTAMP.ToString() },
                 { "webhook-signature", sig }
             };
-            var result = wh.Verify(PAYLOAD, headers);
-            Assert.NotNull(result);
+            wh.Verify(PAYLOAD, key => headers.TryGetValue(key ?? "", out var val) ? val : null);
         }
 
         [Fact]
@@ -47,22 +46,38 @@ namespace HookSniff.Tests
                 { "webhook-timestamp", TIMESTAMP.ToString() },
                 { "webhook-signature", "v1,invalid" }
             };
-            Assert.Throws<WebhookVerificationException>(() => wh.Verify(PAYLOAD, headers));
+            Assert.Throws<WebhookVerificationException>(() =>
+                wh.Verify(PAYLOAD, key => headers.TryGetValue(key ?? "", out var val) ? val : null));
         }
 
         [Fact]
-        public void TestSvixBrandedHeaders()
+        public void TestRejectOldTimestamp()
+        {
+            var wh = new Webhook(SECRET);
+            var oldTs = DateTimeOffset.UtcNow.ToUnixTimeSeconds() - 600;
+            var sig = Sign(SECRET, MSG_ID, oldTs, PAYLOAD);
+            var headers = new System.Collections.Generic.Dictionary<string, string>
+            {
+                { "webhook-id", MSG_ID },
+                { "webhook-timestamp", oldTs.ToString() },
+                { "webhook-signature", sig }
+            };
+            Assert.Throws<WebhookVerificationException>(() =>
+                wh.Verify(PAYLOAD, key => headers.TryGetValue(key ?? "", out var val) ? val : null));
+        }
+
+        [Fact]
+        public void TestHookSniffBrandedHeaders()
         {
             var wh = new Webhook(SECRET);
             var sig = Sign(SECRET, MSG_ID, TIMESTAMP, PAYLOAD);
             var headers = new System.Collections.Generic.Dictionary<string, string>
             {
-                { "svix-id", MSG_ID },
-                { "svix-timestamp", TIMESTAMP.ToString() },
-                { "svix-signature", sig }
+                { "hooksniff-id", MSG_ID },
+                { "hooksniff-timestamp", TIMESTAMP.ToString() },
+                { "hooksniff-signature", sig }
             };
-            var result = wh.Verify(PAYLOAD, headers);
-            Assert.NotNull(result);
+            wh.Verify(PAYLOAD, key => headers.TryGetValue(key ?? "", out var val) ? val : null);
         }
     }
 }

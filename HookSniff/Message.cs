@@ -81,7 +81,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseMessageOut>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/msg",
+                    path: "/v1/msg",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     cancellationToken: cancellationToken
@@ -104,7 +104,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<ListResponseMessageOut>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/msg",
+                    path: "/v1/msg",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );
@@ -131,7 +131,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<MessageOut>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/msg",
+                    path: "/v1/msg",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: messageIn,
@@ -156,7 +156,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<MessageOut>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/msg",
+                    path: "/v1/msg",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: messageIn
@@ -183,7 +183,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<MessageOut>(
                     method: HttpMethod.Get,
-                    path: $"/api/v1/msg/{msgId}",
+                    path: $"/v1/msg/{msgId}",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     cancellationToken: cancellationToken
@@ -206,7 +206,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<MessageOut>(
                     method: HttpMethod.Get,
-                    path: $"/api/v1/msg/{msgId}",
+                    path: $"/v1/msg/{msgId}",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );

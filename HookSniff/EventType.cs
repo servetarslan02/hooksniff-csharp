@@ -79,7 +79,7 @@ namespace HookSniff
                 var response =
                     await _client.HookSniffHttpClient.SendRequestAsync<ListResponseEventTypeOut>(
                         method: HttpMethod.Get,
-                        path: "/api/v1/event-type",
+                        path: "/v1/event-type",
                         queryParams: options?.QueryParams(),
                         headerParams: options?.HeaderParams(),
                         cancellationToken: cancellationToken
@@ -103,7 +103,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<ListResponseEventTypeOut>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/event-type",
+                    path: "/v1/event-type",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );
@@ -135,7 +135,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EventTypeOut>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/event-type",
+                    path: "/v1/event-type",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: eventTypeIn,
@@ -165,7 +165,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EventTypeOut>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/event-type",
+                    path: "/v1/event-type",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: eventTypeIn
@@ -201,7 +201,7 @@ namespace HookSniff
                 var response =
                     await _client.HookSniffHttpClient.SendRequestAsync<EventTypeImportOpenApiOut>(
                         method: HttpMethod.Post,
-                        path: "/api/v1/event-type/import/openapi",
+                        path: "/v1/event-type/import/openapi",
                         queryParams: options?.QueryParams(),
                         headerParams: options?.HeaderParams(),
                         content: eventTypeImportOpenApiIn,
@@ -236,7 +236,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EventTypeImportOpenApiOut>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/event-type/import/openapi",
+                    path: "/v1/event-type/import/openapi",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: eventTypeImportOpenApiIn
@@ -263,7 +263,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EventTypeOut>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -289,7 +289,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EventTypeOut>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -320,7 +320,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EventTypeOut>(
                     method: HttpMethod.Put,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -349,7 +349,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EventTypeOut>(
                     method: HttpMethod.Put,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -384,7 +384,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<bool>(
                     method: HttpMethod.Delete,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -417,7 +417,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<bool>(
                     method: HttpMethod.Delete,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -450,7 +450,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EventTypeOut>(
                     method: HttpMethod.Patch,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },
@@ -479,7 +479,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EventTypeOut>(
                     method: HttpMethod.Patch,
-                    path: "/api/v1/event-type/{event_type_name}",
+                    path: "/v1/event-type/{event_type_name}",
                     pathParams: new Dictionary<string, string>
                     {
                         { "event_type_name", eventTypeName },

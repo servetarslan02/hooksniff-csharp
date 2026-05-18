@@ -29,7 +29,7 @@ namespace HookSniff
             {
                 await _client.HookSniffHttpClient.SendRequestAsync<bool>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/auth/logout",
+                    path: "/v1/auth/logout",
                     cancellationToken: cancellationToken
                 );
             }
@@ -49,7 +49,7 @@ namespace HookSniff
             {
                 _client.HookSniffHttpClient.SendRequest<bool>(
                     method: HttpMethod.Post,
-                    path: "/api/v1/auth/logout"
+                    path: "/v1/auth/logout"
                 );
             }
             catch (ApiException e)

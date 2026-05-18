@@ -10,36 +10,36 @@ namespace HookSniff
 
         public async Task<ListResponseServiceTokenOut> ListAsync(CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseServiceTokenOut>(HttpMethod.Get, "/api/v1/service-tokens", cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseServiceTokenOut>(HttpMethod.Get, "/v1/service-tokens", cancellationToken: ct);
             return r.Data;
         }
 
         public ListResponseServiceTokenOut List()
         {
-            var r = _client.HookSniffHttpClient.SendRequest<ListResponseServiceTokenOut>(HttpMethod.Get, "/api/v1/service-tokens");
+            var r = _client.HookSniffHttpClient.SendRequest<ListResponseServiceTokenOut>(HttpMethod.Get, "/v1/service-tokens");
             return r.Data;
         }
 
         public async Task<ServiceTokenOut> CreateAsync(CreateServiceTokenRequest req, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<ServiceTokenOut>(HttpMethod.Post, "/api/v1/service-tokens", content: req, cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<ServiceTokenOut>(HttpMethod.Post, "/v1/service-tokens", content: req, cancellationToken: ct);
             return r.Data;
         }
 
         public ServiceTokenOut Create(CreateServiceTokenRequest req)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<ServiceTokenOut>(HttpMethod.Post, "/api/v1/service-tokens", content: req);
+            var r = _client.HookSniffHttpClient.SendRequest<ServiceTokenOut>(HttpMethod.Post, "/v1/service-tokens", content: req);
             return r.Data;
         }
 
         public async Task DeleteAsync(string id, CancellationToken ct = default)
         {
-            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Delete, $"/api/v1/service-tokens/{id}", cancellationToken: ct);
+            await _client.HookSniffHttpClient.SendRequestAsync<bool>(HttpMethod.Delete, $"/v1/service-tokens/{id}", cancellationToken: ct);
         }
 
         public void Delete(string id)
         {
-            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Delete, $"/api/v1/service-tokens/{id}");
+            _client.HookSniffHttpClient.SendRequest<bool>(HttpMethod.Delete, $"/v1/service-tokens/{id}");
         }
     }
 }

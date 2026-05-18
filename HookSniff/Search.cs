@@ -25,13 +25,13 @@ namespace HookSniff
 
         public async Task<SearchResultOut> SearchAsync(SearchOptions options, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<SearchResultOut>(HttpMethod.Get, "/api/v1/search", queryParams: options.QueryParams(), cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<SearchResultOut>(HttpMethod.Get, "/v1/search", queryParams: options.QueryParams(), cancellationToken: ct);
             return r.Data;
         }
 
         public SearchResultOut DoSearch(SearchOptions options)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<SearchResultOut>(HttpMethod.Get, "/api/v1/search", queryParams: options.QueryParams());
+            var r = _client.HookSniffHttpClient.SendRequest<SearchResultOut>(HttpMethod.Get, "/v1/search", queryParams: options.QueryParams());
             return r.Data;
         }
     }

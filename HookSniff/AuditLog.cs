@@ -27,25 +27,25 @@ namespace HookSniff
 
         public async Task<AuditLogResponse> ListAsync(AuditLogQueryOptions? options = null, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<AuditLogResponse>(HttpMethod.Get, "/api/v1/audit-log", queryParams: options?.QueryParams(), cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<AuditLogResponse>(HttpMethod.Get, "/v1/audit-log", queryParams: options?.QueryParams(), cancellationToken: ct);
             return r.Data;
         }
 
         public AuditLogResponse List(AuditLogQueryOptions? options = null)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<AuditLogResponse>(HttpMethod.Get, "/api/v1/audit-log", queryParams: options?.QueryParams());
+            var r = _client.HookSniffHttpClient.SendRequest<AuditLogResponse>(HttpMethod.Get, "/v1/audit-log", queryParams: options?.QueryParams());
             return r.Data;
         }
 
         public async Task<AuditEntryOut> GetAsync(string id, CancellationToken ct = default)
         {
-            var r = await _client.HookSniffHttpClient.SendRequestAsync<AuditEntryOut>(HttpMethod.Get, $"/api/v1/audit-log/{id}", cancellationToken: ct);
+            var r = await _client.HookSniffHttpClient.SendRequestAsync<AuditEntryOut>(HttpMethod.Get, $"/v1/audit-log/{id}", cancellationToken: ct);
             return r.Data;
         }
 
         public AuditEntryOut Get(string id)
         {
-            var r = _client.HookSniffHttpClient.SendRequest<AuditEntryOut>(HttpMethod.Get, $"/api/v1/audit-log/{id}");
+            var r = _client.HookSniffHttpClient.SendRequest<AuditEntryOut>(HttpMethod.Get, $"/v1/audit-log/{id}");
             return r.Data;
         }
     }

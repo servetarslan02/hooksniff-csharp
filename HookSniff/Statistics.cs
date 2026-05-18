@@ -17,7 +17,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<object>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/stats/usage/app",
+                    path: "/v1/stats/usage/app",
                     cancellationToken: cancellationToken
                 );
                 return response.Data;
@@ -38,7 +38,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<object>(
                     method: HttpMethod.Get,
-                    path: "/api/v1/stats/usage/app"
+                    path: "/v1/stats/usage/app"
                 );
                 return response.Data;
             }
