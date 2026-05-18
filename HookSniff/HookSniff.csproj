@@ -9,8 +9,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/hooksniff/hooksniff-webhooks.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/hooksniff/hooksniff-webhooks/tree/main/csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/servetarslan02/hooksniff-csharp.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/servetarslan02/hooksniff-csharp</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
