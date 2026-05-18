@@ -221,7 +221,7 @@ For 5xx server errors, the SDK retries with exponential backoff using the config
 ## Links
 
 - 📖 [Documentation](https://hooksniff.vercel.app/docs)
-- 🔑 [API Reference](https://hooksniff-api-1046140057667.europe-west1.run.app/v1/docs)
+- 🔑 [API Reference](https://hooksniff.vercel.app/docs)
 - 💰 [Pricing](https://hooksniff.vercel.app/pricing)
 - 🐛 [Report a Bug](https://github.com/servetarslan02/hooksniff-csharp/issues)
 - 💬 [GitHub Discussions](https://github.com/servetarslan02/HookSniff/discussions)
