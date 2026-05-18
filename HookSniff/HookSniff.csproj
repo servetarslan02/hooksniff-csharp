@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>HookSniff</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>HookSniff</Authors>
     <Company>HookSniff</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
