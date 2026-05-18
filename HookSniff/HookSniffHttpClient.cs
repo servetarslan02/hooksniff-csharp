@@ -83,7 +83,7 @@ namespace HookSniff
 
             if (_debug)
             {
-                Console.WriteLine($"[HookSniff] → {method} {_baseUrl}{path}");
+                Console.WriteLine($"[HookSniff] → {method} {serverUrl}{path}");
             }
 
             var startTime = DateTime.UtcNow;

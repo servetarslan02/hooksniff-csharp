@@ -143,7 +143,6 @@ namespace HookSniff.Exceptions
             };
         }
     }
-}
 
     /// <summary>408 Request Timeout — The server timed out waiting for the request</summary>
     public class RequestTimeoutException : HookSniffApiException
@@ -194,7 +193,7 @@ namespace HookSniff.Exceptions
             : base(message ?? "Request timeout", 0, null) { }
     }
 
-    /// <summary>Network error — connection failed</summary>
+        /// <summary>Network error — connection failed</summary>
     public class NetworkException : HookSniffApiException
     {
         public NetworkException(string message = null)
@@ -208,3 +207,4 @@ namespace HookSniff.Exceptions
             : base(message ?? "Authentication failed", 401, message, headers) { }
     }
 }
+
