@@ -124,6 +124,62 @@ namespace HookSniff
             throw new WebhookVerificationException("No matching signature found");
         }
 
+        /// <summary>
+        /// Verify and parse a webhook payload.
+        /// Verifies the HMAC-SHA256 signature, then parses the payload
+        /// into a typed WebhookEvent with Event, Data, and Timestamp.
+        /// </summary>
+        public WebhookEvent VerifyAndParse(ReadOnlySpan<char> payload, WebHeaderCollection headers)
+        {
+            Verify(payload, headers);
+            return ParsePayload(payload.ToString());
+        }
+
+        /// <summary>
+        /// Verify and parse a webhook payload using a headers provider function.
+        /// </summary>
+        public WebhookEvent VerifyAndParse(ReadOnlySpan<char> payload, Func<string?, string?> headersProvider)
+        {
+            Verify(payload, headersProvider);
+            return ParsePayload(payload.ToString());
+        }
+
+        private static WebhookEvent ParsePayload(string payload)
+        {
+            if (string.IsNullOrEmpty(payload))
+            {
+                return new WebhookEvent("", new System.Collections.Generic.Dictionary<string, object>(), "");
+            }
+
+            try
+            {
+                var dict = System.Text.Json.JsonSerializer.Deserialize<System.Collections.Generic.Dictionary<string, System.Text.Json.JsonElement>>(payload);
+                if (dict == null)
+                {
+                    return new WebhookEvent("", new System.Collections.Generic.Dictionary<string, object>(), "");
+                }
+
+                var @event = dict.ContainsKey("event") ? dict["event"].GetString() :
+                             dict.ContainsKey("eventType") ? dict["eventType"].GetString() : "";
+                var timestamp = dict.ContainsKey("timestamp") ? dict["timestamp"].GetString() : "";
+
+                var data = new System.Collections.Generic.Dictionary<string, object>();
+                if (dict.ContainsKey("data") && dict["data"].ValueKind == System.Text.Json.JsonValueKind.Object)
+                {
+                    foreach (var prop in dict["data"].EnumerateObject())
+                    {
+                        data[prop.Name] = prop.Value.ToString();
+                    }
+                }
+
+                return new WebhookEvent(@event ?? "", data, timestamp ?? "");
+            }
+            catch
+            {
+                return new WebhookEvent("", new System.Collections.Generic.Dictionary<string, object>(), "");
+            }
+        }
+
         private static void VerifyTimestamp(ReadOnlySpan<char> timestampHeader)
         {
             DateTimeOffset timestamp;
