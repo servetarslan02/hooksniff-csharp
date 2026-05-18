@@ -2,16 +2,20 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>HookSniff</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.2.0</Version>
     <Authors>HookSniff</Authors>
     <Company>HookSniff</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/servetarslan02/hooksniff-csharp.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/servetarslan02/hooksniff-csharp</PackageProjectUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
