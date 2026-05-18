@@ -89,5 +89,126 @@ namespace HookSniff.Tests
             Assert.Equal("a1", eventObj["appId"]);
             Assert.Equal("endpoint.created", eventObj.EventType);
         }
+
+        [Fact]
+        public void ParseEndpointUpdatedData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "endpoint.updated",
+                ["data"] = new Dictionary<string, object> { ["appId"] = "a1", ["endpointId"] = "e1" },
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<EndpointUpdatedData>();
+            Assert.Equal("a1", data.AppId);
+        }
+
+        [Fact]
+        public void ParseEndpointDeletedData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "endpoint.deleted",
+                ["data"] = new Dictionary<string, object> { ["appId"] = "a1", ["endpointId"] = "e1" },
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<EndpointDeletedData>();
+            Assert.Equal("e1", data.EndpointId);
+        }
+
+        [Fact]
+        public void ParseEndpointEnabledData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "endpoint.enabled",
+                ["data"] = new Dictionary<string, object> { ["appId"] = "a1", ["endpointId"] = "e1" },
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<EndpointEnabledData>();
+            Assert.Equal("a1", data.AppId);
+        }
+
+        [Fact]
+        public void ParseMessageAttemptFailingData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "message.atattempt.failing",
+                ["data"] = new Dictionary<string, object>
+                {
+                    ["appId"] = "a1", ["msgId"] = "m1",
+                    ["attempt"] = new Dictionary<string, object>
+                    {
+                        ["id"] = "att", ["timestamp"] = "t", ["responseStatusCode"] = 429
+                    }
+                },
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<MessageAttemptFailingData>();
+            Assert.Equal(429, data.Attempt.ResponseStatusCode);
+        }
+
+        [Fact]
+        public void ParseMessageAttemptRecoveredData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "message.attempt.recovered",
+                ["data"] = new Dictionary<string, object>
+                {
+                    ["appId"] = "a1", ["msgId"] = "m1",
+                    ["attempt"] = new Dictionary<string, object>
+                    {
+                        ["id"] = "att", ["timestamp"] = "t", ["responseStatusCode"] = 200
+                    }
+                },
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<MessageAttemptRecoveredData>();
+            Assert.Equal(200, data.Attempt.ResponseStatusCode);
+        }
+
+        [Fact]
+        public void EmptyData()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "endpoint.created",
+                ["data"] = new Dictionary<string, object>(),
+                ["timestamp"] = ""
+            });
+            var data = eventObj.ParseData<EndpointCreatedData>();
+            Assert.Equal("", data.AppId);
+        }
+
+        [Fact]
+        public void GetMissingKeyReturnsNull()
+        {
+            var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+            {
+                ["event"] = "test",
+                ["data"] = new Dictionary<string, object> { ["x"] = 1 },
+                ["timestamp"] = ""
+            });
+            Assert.Null(eventObj.Get("missing"));
+        }
+
+        [Fact]
+        public void EventTypesAreCorrect()
+        {
+            var types = new[] { "endpoint.created", "endpoint.updated", "endpoint.deleted",
+                                "endpoint.enabled", "endpoint.disabled" };
+            foreach (var type in types)
+            {
+                var eventObj = WebhookEvent.Parse(new Dictionary<string, object>
+                {
+                    ["event"] = type,
+                    ["data"] = new Dictionary<string, object>(),
+                    ["timestamp"] = ""
+                });
+                Assert.Equal(type, eventObj.Event);
+            }
+        }
     }
 }
