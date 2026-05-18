@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace HookSniff
 {
@@ -51,6 +52,17 @@ namespace HookSniff
         public override string ToString()
         {
             return $"WebhookEvent{{event='{Event}', timestamp='{Timestamp}'}}";
+        }
+
+        /// <summary>
+        /// Parse the event data into a typed object using JSON serialization.
+        /// </summary>
+        /// <typeparam name="T">Target type</typeparam>
+        /// <returns>Typed data object</returns>
+        public T ParseData<T>()
+        {
+            var json = JsonSerializer.Serialize(Data);
+            return JsonSerializer.Deserialize<T>(json);
         }
 
         /// <summary>
