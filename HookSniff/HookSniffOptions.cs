@@ -8,7 +8,7 @@ namespace HookSniff
             get => ServerUrl;
         }
         public string? ServerUrl { get; }
-        public List<int> RetryScheduleMilliseconds { get; } = [50, 100, 200];
+        public List<int> RetryScheduleMilliseconds { get; } = [1000, 2000, 4000];
         public int TimeoutMilliseconds { get; } = 15000;
 
         /// <param name="serverUrl">The server URL to connect to.</param>
@@ -23,7 +23,7 @@ namespace HookSniff
         {
             ServerUrl = serverUrl ?? baseUrl;
             TimeoutMilliseconds = timeoutMilliseconds;
-            retryScheduleMilliseconds ??= [50, 100, 200];
+            retryScheduleMilliseconds ??= [1000, 2000, 4000];
             if (retryScheduleMilliseconds.Count > 5)
             {
                 throw new ArgumentException("number of retries must not exceed 5");
