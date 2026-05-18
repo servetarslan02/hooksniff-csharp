@@ -5,7 +5,7 @@
   <a href="https://www.nuget.org/packages/HookSniff"><img src="https://img.shields.io/nuget/v/HookSniff" alt="NuGet"></a>
 </p>
 
-C# SDK for the [HookSniff](https://hooksniff.com) webhook delivery platform.
+C# SDK for the [HookSniff](https://hooksniff.vercel.app) webhook delivery platform.
 
 ## Installation
 
@@ -75,6 +75,6 @@ var payload = wh.Verify(body, headers);
 
 ## Links
 
-- [Documentation](https://docs.hooksniff.com)
-- [API Reference](https://api.hooksniff.com)
+- [Documentation](https://hooksniff.vercel.app/docs)
+- [API Reference](https://hooksniff-api-1046140057667.europe-west1.run.app)
 - [GitHub](https://github.com/servetarslan02/HookSniff)
