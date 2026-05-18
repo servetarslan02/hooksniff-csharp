@@ -61,7 +61,8 @@ namespace HookSniff
                     token,
                     opts.RetryScheduleMilliseconds,
                     $"hooksniff-libs/{Version.version}/csharp",
-                    opts.ServerUrl ?? Utils.DEFAULT_SERVER_URL
+                    opts.ServerUrl ?? Utils.DEFAULT_SERVER_URL,
+                    opts.Debug
                 );
         }
     }

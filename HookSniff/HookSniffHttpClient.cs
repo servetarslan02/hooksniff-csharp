@@ -10,13 +10,15 @@ namespace HookSniff
         string token,
         List<int> retryScheduleMilliseconds,
         string userAgent,
-        string serverUrl
+        string serverUrl,
+        bool debug = false
     )
     {
         private readonly List<int> retryScheduleMilliseconds = retryScheduleMilliseconds;
         private readonly string serverUrl = serverUrl;
         private readonly HttpClient _httpClient = new();
         private readonly string _token = token;
+        private readonly bool _debug = debug;
         private readonly JsonSerializerSettings patchJsonOptions = new();
         private readonly JsonSerializerSettings JsonOptions = new()
         {
@@ -78,7 +80,21 @@ namespace HookSniff
                 headerParams,
                 content
             );
+
+            if (_debug)
+            {
+                Console.WriteLine($"[HookSniff] → {method} {_baseUrl}{path}");
+            }
+
+            var startTime = DateTime.UtcNow;
             var response = await _httpClient.SendAsync(request, cancellationToken);
+
+            if (_debug)
+            {
+                var elapsed = (DateTime.UtcNow - startTime).TotalMilliseconds;
+                Console.WriteLine($"[HookSniff] ← {(int)response.StatusCode} ({elapsed:F0}ms)");
+            }
+
             for (var index = 0; index < retryScheduleMilliseconds.Count; index++)
             {
                 // 429 Rate Limit — respect Retry-After header
