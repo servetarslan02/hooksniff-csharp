@@ -91,7 +91,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseMessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/attempt/endpoint/{endpointId}",
+                    path: $"/v1/webhooks/attempts/endpoint/{endpointId}",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     cancellationToken: cancellationToken
@@ -117,7 +117,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<ListResponseMessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/attempt/endpoint/{endpointId}",
+                    path: $"/v1/webhooks/attempts/endpoint/{endpointId}",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );
@@ -143,7 +143,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseMessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/attempt/msg/{msgId}",
+                    path: $"/v1/webhooks/{msgId}/attempts",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     cancellationToken: cancellationToken
@@ -169,7 +169,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<ListResponseMessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/attempt/msg/{msgId}",
+                    path: $"/v1/webhooks/{msgId}/attempts",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );
@@ -195,7 +195,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<MessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/msg/{msgId}/attempt/{attemptId}",
+                    path: $"/v1/webhooks/{msgId}/attempts/{attemptId}",
                     cancellationToken: cancellationToken
                 );
                 return response.Data;
@@ -216,7 +216,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<MessageAttemptOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/msg/{msgId}/attempt/{attemptId}"
+                    path: $"/v1/webhooks/{msgId}/attempts/{attemptId}"
                 );
                 return response.Data;
             }
@@ -240,7 +240,7 @@ namespace HookSniff
             {
                 await _client.HookSniffHttpClient.SendRequestAsync<bool>(
                     method: HttpMethod.Post,
-                    path: $"/v1/msg/{msgId}/endpoint/{endpointId}/resend",
+                    path: $"/v1/webhooks/{msgId}/endpoint/{endpointId}/resend",
                     cancellationToken: cancellationToken
                 );
             }
@@ -260,7 +260,7 @@ namespace HookSniff
             {
                 _client.HookSniffHttpClient.SendRequest<bool>(
                     method: HttpMethod.Post,
-                    path: $"/v1/msg/{msgId}/endpoint/{endpointId}/resend"
+                    path: $"/v1/webhooks/{msgId}/endpoint/{endpointId}/resend"
                 );
             }
             catch (ApiException e)

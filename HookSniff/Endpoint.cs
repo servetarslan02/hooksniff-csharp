@@ -63,7 +63,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<ListResponseEndpointOut>(
                     method: HttpMethod.Get,
-                    path: "/v1/endpoint",
+                    path: "/v1/endpoints",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     cancellationToken: cancellationToken
@@ -86,7 +86,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<ListResponseEndpointOut>(
                     method: HttpMethod.Get,
-                    path: "/v1/endpoint",
+                    path: "/v1/endpoints",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams()
                 );
@@ -113,7 +113,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EndpointOut>(
                     method: HttpMethod.Post,
-                    path: "/v1/endpoint",
+                    path: "/v1/endpoints",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: endpointIn,
@@ -138,7 +138,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EndpointOut>(
                     method: HttpMethod.Post,
-                    path: "/v1/endpoint",
+                    path: "/v1/endpoints",
                     queryParams: options?.QueryParams(),
                     headerParams: options?.HeaderParams(),
                     content: endpointIn
@@ -161,7 +161,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EndpointOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/endpoint/{endpointId}",
+                    path: $"/v1/endpoints/{endpointId}",
                     cancellationToken: cancellationToken
                 );
                 return response.Data;
@@ -182,7 +182,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EndpointOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/endpoint/{endpointId}"
+                    path: $"/v1/endpoints/{endpointId}"
                 );
                 return response.Data;
             }
@@ -207,7 +207,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EndpointOut>(
                     method: HttpMethod.Put,
-                    path: $"/v1/endpoint/{endpointId}",
+                    path: $"/v1/endpoints/{endpointId}",
                     content: endpointUpdate,
                     cancellationToken: cancellationToken
                 );
@@ -230,7 +230,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EndpointOut>(
                     method: HttpMethod.Put,
-                    path: $"/v1/endpoint/{endpointId}",
+                    path: $"/v1/endpoints/{endpointId}",
                     content: endpointUpdate
                 );
                 return response.Data;
@@ -251,7 +251,7 @@ namespace HookSniff
             {
                 await _client.HookSniffHttpClient.SendRequestAsync<bool>(
                     method: HttpMethod.Delete,
-                    path: $"/v1/endpoint/{endpointId}",
+                    path: $"/v1/endpoints/{endpointId}",
                     cancellationToken: cancellationToken
                 );
             }
@@ -271,7 +271,7 @@ namespace HookSniff
             {
                 _client.HookSniffHttpClient.SendRequest<bool>(
                     method: HttpMethod.Delete,
-                    path: $"/v1/endpoint/{endpointId}"
+                    path: $"/v1/endpoints/{endpointId}"
                 );
             }
             catch (ApiException e)
@@ -290,7 +290,7 @@ namespace HookSniff
             {
                 var response = await _client.HookSniffHttpClient.SendRequestAsync<EndpointSecretOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/endpoint/{endpointId}/secret",
+                    path: $"/v1/endpoints/{endpointId}/secret",
                     cancellationToken: cancellationToken
                 );
                 return response.Data;
@@ -311,7 +311,7 @@ namespace HookSniff
             {
                 var response = _client.HookSniffHttpClient.SendRequest<EndpointSecretOut>(
                     method: HttpMethod.Get,
-                    path: $"/v1/endpoint/{endpointId}/secret"
+                    path: $"/v1/endpoints/{endpointId}/secret"
                 );
                 return response.Data;
             }
@@ -337,7 +337,7 @@ namespace HookSniff
             {
                 await _client.HookSniffHttpClient.SendRequestAsync<bool>(
                     method: HttpMethod.Post,
-                    path: $"/v1/endpoint/{endpointId}/secret/rotate",
+                    path: $"/v1/endpoints/{endpointId}/secret/rotate",
                     headerParams: options?.HeaderParams(),
                     content: endpointSecretRotateIn,
                     cancellationToken: cancellationToken
@@ -364,7 +364,7 @@ namespace HookSniff
             {
                 _client.HookSniffHttpClient.SendRequest<bool>(
                     method: HttpMethod.Post,
-                    path: $"/v1/endpoint/{endpointId}/secret/rotate",
+                    path: $"/v1/endpoints/{endpointId}/secret/rotate",
                     headerParams: options?.HeaderParams(),
                     content: endpointSecretRotateIn
                 );
