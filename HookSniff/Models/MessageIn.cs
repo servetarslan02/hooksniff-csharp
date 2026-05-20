@@ -9,28 +9,28 @@ namespace HookSniff.Models
         [JsonProperty("channels")]
         public List<string>? Channels { get; set; } = null;
 
-        [JsonProperty("deliverAt")]
+        [JsonProperty("deliver_at")]
         public DateTime? DeliverAt { get; set; } = null;
 
-        [JsonProperty("eventId")]
+        [JsonProperty("event_id")]
         public string? EventId { get; set; } = null;
 
-        [JsonProperty("eventType", Required = Required.Always)]
+        [JsonProperty("event", Required = Required.Always)]
         public required string EventType { get; set; }
 
-        [JsonProperty("payload", Required = Required.Always)]
+        [JsonProperty("data", Required = Required.Always)]
         public required Object Payload { get; set; }
 
-        [JsonProperty("payloadRetentionHours")]
+        [JsonProperty("payload_retention_hours")]
         public long? PayloadRetentionHours { get; set; } = null;
 
-        [JsonProperty("payloadRetentionPeriod")]
+        [JsonProperty("payload_retention_period")]
         public long? PayloadRetentionPeriod { get; set; } = null;
 
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; } = null;
 
-        [JsonProperty("transformationsParams")]
+        [JsonProperty("transformations_params")]
         public Object? TransformationsParams { get; set; } = null;
 
         public override string ToString()
