@@ -28,7 +28,7 @@ using HookSniff;
 // Initialize client
 var client = new HookSniffClient(
     "hs_xxx_your_api_key",
-    new HookSniffOptions("https://hooksniff-api-1046140057667.europe-west1.run.app")
+    new HookSniffOptions("https://hooksniff-api-e6ztf3x2ma-ew.a.run.app")
 );
 
 // List endpoints
@@ -66,7 +66,7 @@ var client = new HookSniffClient("hs_xxx");
 // With custom base URL
 var client = new HookSniffClient(
     "hs_xxx",
-    new HookSniffOptions("https://hooksniff-api-1046140057667.europe-west1.run.app")
+    new HookSniffOptions("https://hooksniff-api-e6ztf3x2ma-ew.a.run.app")
 );
 
 // With custom retry schedule (max 5 retries)
